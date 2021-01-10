@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css" >
+  <title>lorex</title>
+</head>
+<body>
+   <div class="container">
+       <div class="eyes">
+         <div class="eye"></div>
+         <div class="eye"></div>
+       </div>
+      <img src="/img/lorax.png" class="bread">
+      <img src="/img/NicePng_lorax-png_581113.png" class="logo" width="40%" >
+   </div>
+   <script>
+     document.querySelector('body').addEventListener('mousemove',eyeRoll);
+      function eyeRoll() {
+        var eye = document.querySelectorAll('.eye'); //เลือกทั้งหมดใน กรอบ eye
+        //loop function 
+        eye.forEach( (eye) => {
+          let x = (eye.getBoundingClientRect().left)+(eye.clientWidth / 2);
+          let y = (eye.getBoundingClientRect().bottom)+(eye.clientHeight / 2);
+          //หาองศาดีกรี//
+          let radian = Math.atan2(event.pageX - x , event.pageY - y);
+          let rotation = ( radian * (180/Math.PI)* -1)+270; //การหมุน
+          //สั่งให้ กลับด้าน ตามดีกรี องศาที่เราเลือก
+          eye.style.transform = "rotate("+rotation+"deg)"
+        });
+      }
+   </script>
+</body>
+</html>
